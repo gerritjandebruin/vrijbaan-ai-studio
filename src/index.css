@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: dark light;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-mono-numbers {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Rijkswaterstaat Matrixbord AID Knipperlichten Cadans:
+   - Bovenste 2 lampen: 0,6 seconde aan (0% - 30%)
+   - Onderste 2 lampen: 0,6 seconde aan (30% - 60%)
+   - Alle flashers gedoofd: 0,8 seconde rustpauze (60% - 100%)
+   - Totale cyclus: 2,0 seconden
+*/
+@keyframes matrix-flasher-top {
+  0% {
+    opacity: 1;
+    fill: #f59e0b;
+    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.95)) drop-shadow(0 0 12px rgba(251, 191, 36, 0.8));
+  }
+  30% {
+    opacity: 0.15;
+    fill: #78350f;
+    filter: none;
+  }
+  100% {
+    opacity: 0.15;
+    fill: #78350f;
+    filter: none;
+  }
+}
+
+@keyframes matrix-flasher-bottom {
+  0% {
+    opacity: 0.15;
+    fill: #78350f;
+    filter: none;
+  }
+  30% {
+    opacity: 1;
+    fill: #f59e0b;
+    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.95)) drop-shadow(0 0 12px rgba(251, 191, 36, 0.8));
+  }
+  60% {
+    opacity: 0.15;
+    fill: #78350f;
+    filter: none;
+  }
+  100% {
+    opacity: 0.15;
+    fill: #78350f;
+    filter: none;
+  }
+}
+
+.matrix-flasher-top {
+  animation: matrix-flasher-top 2s infinite steps(1);
+}
+
+.matrix-flasher-bottom {
+  animation: matrix-flasher-bottom 2s infinite steps(1);
+}
+
+/* Custom scrollbar for mobile feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Vrijbaan",
+  "description": "Live matrixborden en gemeten verkeerssnelheden op de Nederlandse snelwegen, zonder afleiding en zonder kaart.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
